@@ -5,13 +5,24 @@ clear;
 
 M = get_image_blocks('/Volumes/autor/storage/datasets/quantization/001_O.png');
 
+double_compression = 0;
 compatible_solutions = 0;
 
 [rows, cols] = size(M);
 for used_q = 1:100
-  Ts = getqt(used_q);
   Mr = cell(rows, cols);
+  % Preprocessed with double-compression
+  if double_compression
+     random_q = randi(99,1);
+     Ts = getqt(random_q);
+     for i=1:rows
+       for j=1:cols
+         Mr{i,j} = dct_qt_block_cycle(M{i,j},Ts);
+       end
+     end
+  end
   % Quantize the blocks
+  Ts = getqt(used_q);
   for i=1:rows
     for j=1:cols
       Mr{i,j} = dct_qt_block_cycle(M{i,j},Ts);
