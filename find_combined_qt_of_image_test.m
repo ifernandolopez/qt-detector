@@ -10,7 +10,7 @@ double_compression = 0;
 compatible_solutions = 0;
 
 [rows, cols] = size(M);
-for used_q = 1:100
+for used_q = 1:99
   Mr = cell(rows, cols);
   % Preprocessed with double-compression
   if double_compression

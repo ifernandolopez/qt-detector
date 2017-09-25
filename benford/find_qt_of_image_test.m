@@ -16,13 +16,13 @@ for used_q = QTs
       Mr{i,j} = dct_qt_block_cycle(M{i,j},Ts);
     end
   end
-  % Guess the mle_q
-  mle_q = find_qt_of_image(Mr,QTs);
+  % Guess the q
+  guess_q = find_qt_of_image(Mr,QTs);
   % Sometimes find false negatives where the image has been quantized
   % but mle_q==100 indicates unquantized
-  if (~ismember(used_q,mle_q))
-    kk = [used_q mle_q] % Output the false negative
+  if (~ismember(used_q,guess_q))
+    kk = [used_q guess_q] % Output the false negative
   end 
   % But fortunatelly q=100 is the only false negative
-  assert(or(ismember(used_q,mle_q), ismember(100,mle_q)));
+  assert(or(ismember(used_q,guess_q), ismember(100,guess_q)));
 end
