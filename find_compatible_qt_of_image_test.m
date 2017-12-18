@@ -6,7 +6,7 @@ clear;
 M = get_image_blocks('/Volumes/autor/storage/datasets/quantization/001_O.png');
 
 double_compression = 0;
-compatible_solutions = 0;
+compatible_solutions = zeros(1,100);
 
 [rows, cols] = size(M);
 for used_q = 1:99
@@ -30,11 +30,14 @@ for used_q = 1:99
   end
   % Guess the q
   guess_q = find_compatible_qt_of_image(Mr);
-  % Count the number of compatible solutions
-  compatible_solutions = compatible_solutions + length(guess_q);
+  % Store the number of compatible solutions for each path_i
+  compatible_solutions(used_q) = length(guess_q);
   % With this method used_q is always one of the compatible solutions
   if (~ismember(used_q,guess_q))
     kk = [used_q guess_q] % Output the false solution (should never happen)
   end
   assert(ismember(used_q,guess_q));
 end
+
+mean(compatible_solutions)
+std(compatible_solutions)
