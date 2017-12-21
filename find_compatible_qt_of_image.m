@@ -1,7 +1,7 @@
-function compatible_q = find_compatible_qt_of_image(Mr)
+function compatible_Q = find_compatible_qt_of_image(Mr)
 % Search the compatible_q of an image
 [rows, cols] = size(Mr);
-compatible_q = [];
+compatible_Q = [];
 for q = 1:100 
   compatible = true;
   Ts = getqt(q);
@@ -23,7 +23,7 @@ for q = 1:100
     end
   end
   if (compatible)
-    compatible_q(end+1)= q;
+    compatible_Q(end+1)= q;
   end
 end
 

@@ -1,11 +1,11 @@
-function mle_q = find_mle_qt_of_image(Mr,compatible_q)
+function mle_Q = find_mle_qt_of_image(Mr,compatible_q)
 if (nargin<2)
   compatible_q = [1:100];
 end
 % Guess the Qs values with MLE of the image
 [rows, cols] = size(Mr);
 min_d = inf;
-mle_q = [];
+mle_Q = [];
 for q = compatible_q
   max_RQ2 = 0;
   % sum_d = 0;
@@ -29,17 +29,11 @@ for q = compatible_q
       % sum_d = sum_d + sum(sum(abs(int32(Br)-int32(Br2))));
     end
   end
-%   if (sum_d < min_d)
-%     min_d = sum_d;
-%     mle_q = [q];
-%   elseif (sum_d == min_d)
-%      mle_q(end+1)= q;
-%   end
   if (max_RQ2 < min_d)
     min_d = max_RQ2;
-    mle_q = [q];
+    mle_Q = [q];
   elseif (max_RQ2 == min_d)
-     mle_q(end+1)= q;
+     mle_Q(end+1)= q;
   end
 end
 
