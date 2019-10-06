@@ -1,7 +1,7 @@
 # qt-detector
 JPEG image quantization table detector
 
-This source code implements our three proposed residue methods to detect the JPEG quantization table of an image:
+This source code implements our three proposed residue methods to detect the JPEG quantization table of an image (https://www.sciencedirect.com/science/article/pii/S1568494618301339):
 - Compatibility test method
 - Maximum Likelihood Estimation (MLE) method
 - Combined method
