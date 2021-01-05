@@ -1,7 +1,13 @@
 # qt-detector
 JPEG image quantization table detector
 
-This source code implements our three proposed residue methods to detect the JPEG quantization table of an image (https://www.sciencedirect.com/science/article/pii/S1568494618301339):
+You can find a detailed description and evaluation of the following forged images detection algorithms in this paper:
+
+López Hernández, Fernando, et al. "Residue properties for the arithmetical estimation of the image quantization table." Applied Soft Computing 67 (2018): 309-321.
+
+https://www.sciencedirect.com/science/article/pii/S1568494618301339
+
+This source code implements our three proposed residue methods to detect the JPEG quantization table of an image:
 - Compatibility test method
 - Maximum Likelihood Estimation (MLE) method
 - Combined method
